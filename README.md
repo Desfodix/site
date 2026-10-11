@@ -26,12 +26,12 @@ docker compose cp ./content.backup.json web:/data/content.json
 
 ## Что поменять под себя
 
-- Контакты (Telegram, GitHub, email), тексты «Обо мне» и подпись: `public/index.html`
+- Контакты (Telegram, GitHub, email), тексты «Обо мне» и подпись: `index.html`
 - Акцентный цвет: переменная `--ac` в начале стилей
-- Начальные примеры записей: `seed/content.json` (используются только при первом запуске)
+- Начальные примеры записей: `seed-content.json` (используются только при первом запуске)
 - Порт: строка `8080:3000` в `docker-compose.yml`
 
-После правки `public/index.html` пересоберите: `docker compose up -d --build`.
+После правки `index.html` пересоберите: `docker compose up -d --build`.
 
 ## В интернет
 
@@ -45,3 +45,9 @@ example.com {
 ```
 
 Вход в админку защищён паролем, ограничением попыток и cookie `HttpOnly` + `SameSite=Strict`.
+
+## Структура
+
+Все файлы лежат в корне, без вложенных папок: `Dockerfile`, `server.js`, `index.html`, `seed-content.json`.
+Если заливаете в GitHub вручную, загрузите все эти файлы в корень репозитория (включая `index.html` и `seed-content.json`).
+Контейнер работает от root, чтобы без проблем писать на примонтированный диск (`/data`).

@@ -1,4 +1,13 @@
-# Скопируйте в .env и задайте свой пароль админки
-ADMIN_PASSWORD=change-me-to-a-long-random-password
-# Необязательно: секрет для подписи сессий (иначе берётся из пароля)
-# SESSION_SECRET=
+services:
+  web:
+    build: .
+    container_name: kaneix-site
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8080:3000"
+    volumes:
+      - kaneix-data:/data
+
+volumes:
+  kaneix-data:

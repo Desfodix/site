@@ -8,7 +8,7 @@ if (!PASS) { console.error('Задайте ADMIN_PASSWORD (см. .env.example)')
 const SECRET = process.env.SESSION_SECRET || crypto.createHash('sha256').update('kaneix:' + PASS).digest('hex');
 
 fs.mkdirSync(DATA, { recursive: true });
-if (!fs.existsSync(FILE)) fs.copyFileSync(path.join(__dirname, 'seed', 'content.json'), FILE);
+if (!fs.existsSync(FILE)) fs.copyFileSync(path.join(__dirname, 'seed-content.json'), FILE);
 
 const sign = v => crypto.createHmac('sha256', SECRET).update(v).digest('hex');
 const token = () => { const e = String(Date.now() + 7 * 864e5); return e + '.' + sign(e); };
@@ -63,7 +63,7 @@ http.createServer(async (req, res) => {
       return send(res, 200, { ok: true }, 'application/json', { 'Set-Cookie': `s=${token()}; HttpOnly; SameSite=Strict; Path=/; Max-Age=604800${secure}` });
     }
     if (req.method === 'GET' && !url.startsWith('/api/'))
-      return send(res, 200, fs.readFileSync(path.join(__dirname, 'public', 'index.html')), 'text/html', { 'Cache-Control': 'no-cache' });
+      return send(res, 200, fs.readFileSync(path.join(__dirname, 'index.html')), 'text/html', { 'Cache-Control': 'no-cache' });
     send(res, 404, { error: 'not found' });
   } catch (e) { send(res, 400, { error: 'bad request' }); }
 }).listen(PORT, () => console.log('KaneiX site on :' + PORT));
