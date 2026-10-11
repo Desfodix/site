@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KaneiX</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0d0e10;--ink:#ecebe6;--mut:#80838a;--line:#24262b;--ac:#5eead4;--panel:#14161a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.55 'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 28px}
+.mut{color:var(--mut)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.nv{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{font-weight:800;letter-spacing:-.03em;font-size:20px}
+.lk{display:flex;gap:22px;align-items:center;font-size:15px;color:var(--mut);flex-wrap:wrap;justify-content:flex-end}
+.lk a{transition:color .2s}.lk a:hover{color:var(--ink)}
+.lk button{background:none;border:1px solid var(--line);border-radius:6px;padding:2px 10px;cursor:pointer;color:var(--ink)}
+.lk button:hover{border-color:var(--ac)}
+.hero{padding-top:14vh;padding-bottom:10vh}
+h1.mask{margin:0;overflow:hidden;font-size:clamp(72px,21vw,270px);line-height:.88;letter-spacing:-.055em;font-weight:800;padding-bottom:.06em}
+h1.mask span{display:block}
+.go span{animation:up 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes up{from{transform:translateY(105%)}}
+.lead{margin:40px 0 0;max-width:22em;font-size:clamp(20px,2.6vw,32px);font-weight:500;line-height:1.3;color:var(--mut)}
+.cur{display:inline-block;width:.5em;height:1em;background:var(--ac);margin-left:.2em;vertical-align:-.12em;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+section{padding-top:96px}
+h2{margin:0 0 18px;font-size:15px;font-weight:500;color:var(--mut)}
+h2 span{color:var(--ac);margin-left:6px}
+.row{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line);transition:opacity .3s}
+.list:last-child{border-bottom:1px solid var(--line)}
+.n{font-size:clamp(28px,6vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1.05;transition:transform .4s cubic-bezier(.2,.8,.2,1),color .3s}
+.d,.tg{font-size:15px;color:var(--mut)}
+.list:hover .row:not(:hover){opacity:.3}
+.row:hover .n{transform:translateX(16px);color:var(--ac)}
+@media(max-width:700px){.row{grid-template-columns:1fr;gap:6px}}
+.about{margin:0;max-width:28em;font-size:clamp(22px,3.2vw,38px);line-height:1.3;font-weight:500;letter-spacing:-.02em}
+.big{display:block;padding:18px 0;border-top:1px solid var(--line);font-size:clamp(34px,8vw,104px);font-weight:800;letter-spacing:-.045em;line-height:1;transition:color .25s,padding .35s}
+.big:hover{color:var(--ac);padding-left:18px}
+.pg{padding-top:56px}
+.bk{color:var(--mut);font-size:15px}.bk:hover{color:var(--ink)}
+.pt{margin:28px 0 0;font-size:clamp(40px,9vw,120px);line-height:.95;letter-spacing:-.05em;font-weight:800;overflow-wrap:anywhere}
+.meta{color:var(--mut);margin:20px 0 0;font-size:15px}
+.sum{font-size:clamp(20px,2.4vw,28px);max-width:30em;margin:28px 0;line-height:1.35}
+.ln{border-bottom:1px solid var(--ac);color:var(--ac)}
+.body{max-width:62ch;margin-top:40px;line-height:1.7}
+.body h3{font-size:28px;letter-spacing:-.03em;margin:44px 0 8px}
+.body pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;overflow-x:auto;font-size:15px}
+.body code{background:var(--panel);padding:1px 6px;border-radius:4px;font-size:.9em}
+form{display:grid;gap:14px;margin:36px 0 56px;max-width:760px}
+input,select,textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+fieldset{border:1px solid var(--line);border-radius:10px;display:grid;gap:10px;padding:16px;margin:0}
+.two{display:flex;gap:12px}
+button{cursor:pointer}
+form button,.pg>p button,.ar button{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 16px}
+button:hover{border-color:var(--ac)}
+button.main{background:var(--ac);color:#04110f;border-color:var(--ac);font-weight:700}
+.ar{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+footer{margin-top:120px;border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:15px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md=s=>esc(s).split(/\n{2,}/).map(p=>p.startsWith('## ')?`<h3>${p.slice(3)}</h3>`:p.startsWith('```')?`<pre>${p.replace(/```\w*\n?/g,'')}</pre>`:`<p>${p.replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\n/g,'<br>')}</p>`).join('');
+let D={projects:[],articles:[]};
+let L='ru',owner=false,art=null,edit=null,first=true,msg='';
+const guess=()=>(navigator.language||'').startsWith('ru')?'ru':'en';
+try{L=localStorage.getItem('lang')||guess()}catch(e){L=guess()}
+const T={
+ru:{p:'Проекты',a:'Статьи',ab:'Обо мне',c:'Контакты',lead:'Разработчик. Делаю веб-инструменты и пишу о том, как они устроены.',about:'Делаю веб-приложения и инструменты: от идеи до работающего продукта. Интересуюсь химией и биологией: живые системы и реакции похожи на хорошо написанный код.',back:'Назад',empty:'Пока пусто',adm:'Админка',save:'Сохранить и опубликовать',edit:'Изменить',del:'Удалить',sure:'Точно удалить?',title:'Заголовок',sum:'Краткое описание',body:'Текст (## заголовок, пустая строка между абзацами, ``` для кода)',tags:'Теги через запятую',link:'Ссылка (необязательно)',nw:'Новая запись',noadm:'Админка доступна только владельцу сайта.',open:'Открыть проект',saving:'Публикую…',err:'Не удалось опубликовать: ',need:'Нужен заголовок хотя бы на одном языке.',pw:'Пароль',login:'Войти',bad:'Неверный пароль'},
+en:{p:'Projects',a:'Articles',ab:'About',c:'Contacts',lead:'Developer. I build web tools and write about how they work.',about:'I build web apps and tools, from the first idea to a working product. I am curious about chemistry and biology: living systems and reactions look a lot like well-written code.',back:'Back',empty:'Nothing here yet',adm:'Admin',save:'Save and publish',edit:'Edit',del:'Delete',sure:'Really delete?',title:'Title',sum:'Short summary',body:'Text (## heading, blank line between paragraphs, ``` for code)',tags:'Tags, comma separated',link:'Link (optional)',nw:'New entry',noadm:'The admin is available to the site owner only.',open:'Open project',saving:'Publishing…',err:'Could not publish: ',need:'A title in at least one language is required.',pw:'Password',login:'Sign in',bad:'Wrong password'}};
+const t=k=>T[L][k];
+const pick=o=>(o&&(o[L]||o.ru||o.en))||'';
+const row=(k,x)=>`<a class="row" href="#/${k}/${esc(x.id)}"><span class="d">${esc(x.date)}</span><span class="n">${esc(pick(x.t))}</span><span class="tg">${esc((x.tags||[]).join(', '))}</span></a>`;
+const sec=(id,k,arr)=>`<section id="${id}"><div class="w"><h2>${t(k)}<span>${arr.length}</span></h2><div class="list">${arr.map(x=>row(k,x)).join('')||`<p class="mut">${t('empty')}</p>`}</div></div></section>`;
+const home=()=>`<div class="w hero"><h1 class="mask${first?' go':''}"><span>KaneiX</span></h1><p class="lead">${t('lead')}<i class="cur"></i></p></div>`
++sec('projects','p',D.projects)+sec('articles','a',D.articles)
++`<section id="about"><div class="w"><h2>${t('ab')}</h2><p class="about">${t('about')}</p></div></section>`
++`<section id="contacts"><div class="w"><h2>${t('c')}</h2><div class="list"><a class="big" href="https://t.me/KaneiX">Telegram</a><a class="big" href="https://github.com/KaneiX">GitHub</a><a class="big" href="mailto:hello@example.com">Email</a></div></div></section>`;
+const detail=(k,id)=>{
+  const x=(k==='p'?D.projects:D.articles).find(i=>i.id===id);
+  const back=`<a class="bk" href="#/${k==='p'?'projects':'articles'}">${t('back')}</a>`;
+  if(!x)return `<div class="w pg">${back}<p>404</p></div>`;
+  return `<article class="w pg">${back}<h1 class="pt">${esc(pick(x.t))}</h1><p class="meta">${esc(x.date)}${(x.tags||[]).length?' — '+esc(x.tags.join(', ')):''}</p><p class="sum">${esc(pick(x.s))}</p>${x.link?`<p><a class="ln" href="${esc(x.link)}" target="_blank" rel="noopener">${t('open')}</a></p>`:''}<div class="body">${md(pick(x.b))}</div>${owner?`<p><button data-act="edit" data-k="${k}" data-id="${esc(x.id)}">${t('edit')}</button></p>`:''}</article>`;
+};
+function admin(){
+  if(!owner)return `<div class="w pg"><h1 class="pt">${t('adm')}</h1><form id="lf"><input id="pw" type="password" placeholder="${t('pw')}" autocomplete="current-password"><div class="two"><button class="main">${t('login')}</button></div><p class="mut">${esc(msg)}</p></form></div>`;
+  const e=edit||{k:'p',date:new Date().toISOString().slice(0,10)},g=(f,l)=>esc(e[f]&&e[f][l]||'');
+  const items=[['p',D.projects],['a',D.articles]].map(([k,arr])=>arr.map(x=>`<div class="ar"><span>${esc(pick(x.t))}</span><span><button data-act="edit" data-k="${k}" data-id="${esc(x.id)}">${t('edit')}</button> <button data-act="del" data-k="${k}" data-id="${esc(x.id)}">${t('del')}</button></span></div>`).join('')).join('');
+  return `<div class="w pg"><h1 class="pt">${t('adm')}</h1><form id="f"><div class="two"><select id="type" ${edit?'disabled':''}><option value="p" ${e.k==='p'?'selected':''}>${t('p')}</option><option value="a" ${e.k==='a'?'selected':''}>${t('a')}</option></select><input id="date" type="date" value="${esc(e.date)}"></div>`
+  +['ru','en'].map(l=>`<fieldset><legend>${l.toUpperCase()}</legend><input id="t_${l}" placeholder="${t('title')}" value="${g('t',l)}"><input id="s_${l}" placeholder="${t('sum')}" value="${g('s',l)}"><textarea id="b_${l}" rows="9" placeholder="${t('body')}">${g('b',l)}</textarea></fieldset>`).join('')
+  +`<input id="tags" placeholder="${t('tags')}" value="${esc((e.tags||[]).join(', '))}"><input id="link" placeholder="${t('link')}" value="${esc(e.link||'')}"><div class="two"><button class="main">${t('save')}</button>${edit?`<button type="button" data-act="nw">${t('nw')}</button>`:''}</div><p class="mut">${esc(msg)}</p></form>${items}</div>`;
+}
+const nav=()=>`<nav><div class="w nv"><a class="logo" href="#/">KaneiX</a><div class="lk"><a href="#/projects">${t('p')}</a><a href="#/articles">${t('a')}</a><a href="#/about">${t('ab')}</a><a href="#/contacts">${t('c')}</a>${owner?`<a href="#/admin">${t('adm')}</a>`:''}<button data-act="lang">${L==='ru'?'EN':'RU'}</button></div></div></nav>`;
+function render(){
+  const [,k,id]=(location.hash.slice(1)||'/').split('/');
+  document.documentElement.lang=L;
+  const v=(k==='p'||k==='a')?detail(k,id):k==='admin'?admin():home();
+  $('#root').innerHTML=nav()+`<main>${v}</main><footer><div class="w">© ${new Date().getFullYear()} KaneiX</div></footer>`;
+  first=false;
+  const el=['projects','articles','about','contacts'].includes(k)&&document.getElementById(k);
+  if(el)el.scrollIntoView();else scrollTo({top:0,behavior:'instant'});
+}
+const keep=()=>{const y=scrollY;render();scrollTo({top:y,behavior:'instant'})};
+async function pub(){
+  msg=t('saving');keep();
+  try{
+    const r=await fetch('/api/content',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(D)});
+    if(r.status===401){owner=false;msg='';return keep()}
+    if(!r.ok)throw new Error(r.status);
+    msg='OK';
+  }catch(e){msg=t('err')+(e.message||'')}
+  keep();
+}
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act,arr=b.dataset.k==='p'?D.projects:D.articles;
+  if(a==='lang'){L=L==='ru'?'en':'ru';try{localStorage.setItem('lang',L)}catch(_){}keep()}
+  else if(a==='nw'){edit=null;msg='';render()}
+  else if(a==='edit'){
+    const x=arr.find(i=>i.id===b.dataset.id);if(!x)return;
+    edit=Object.assign({k:b.dataset.k},x);msg='';
+    const same=location.hash==='#/admin';location.hash='#/admin';if(same)render();
+  }else if(a==='del'){
+    if(!b.dataset.sure){b.dataset.sure=1;b.textContent=t('sure');return}
+    const i=arr.findIndex(z=>z.id===b.dataset.id);if(i>-1)arr.splice(i,1);
+    await pub();
+  }
+});
+document.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(e.target.id==='lf'){
+    const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:$('#pw').value})});
+    if(r.ok){owner=true;msg='';}else{msg=t('bad');}
+    return keep();
+  }
+  const g=i=>$('#'+i).value.trim();
+  const k=edit?edit.k:g('type'),arr=k==='p'?D.projects:D.articles;
+  const link=g('link');
+  const x={id:edit?edit.id:'',date:g('date'),t:{ru:g('t_ru'),en:g('t_en')},s:{ru:g('s_ru'),en:g('s_en')},b:{ru:$('#b_ru').value,en:$('#b_en').value},tags:g('tags').split(',').map(s=>s.trim()).filter(Boolean),link:/^(https?:|mailto:)/.test(link)?link:''};
+  if(!x.t.ru&&!x.t.en){msg=t('need');return keep()}
+  if(!edit){
+    let id=(x.t.en||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||Date.now().toString(36);
+    if(arr.some(z=>z.id===id))id+='-'+Date.now().toString(36);
+    x.id=id;arr.unshift(x);
+  }else{const i=arr.findIndex(z=>z.id===edit.id);if(i>-1)arr[i]=x;else arr.unshift(x)}
+  edit=null;msg='';
+  await pub();
+});
+addEventListener('hashchange',render);
+(async()=>{
+  try{
+    const [c,m]=await Promise.all([fetch('/api/content').then(r=>r.json()),fetch('/api/me').then(r=>r.json())]);
+    D=c;owner=!!m.owner;
+  }catch(e){}
+  render();
+})();
+</script>
+</body>
+</html>

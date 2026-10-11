@@ -1,0 +1,4 @@
+# Скопируйте в .env и задайте свой пароль админки
+ADMIN_PASSWORD=change-me-to-a-long-random-password
+# Необязательно: секрет для подписи сессий (иначе берётся из пароля)
+# SESSION_SECRET=
